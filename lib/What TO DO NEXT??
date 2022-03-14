@@ -1,2 +1,2 @@
 The problem is build() get called before all initState() is fully executed maybe because of async await needd to check
-Need to check different that is onGenerateRoute or unknownRoute.
+Need to check different that is onGenerateRoute or unknownRoute.`
