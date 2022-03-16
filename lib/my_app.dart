@@ -19,14 +19,17 @@ Routes route = Routes();
 class _MyAppState extends State<MyApp> {
   setInitialRoute() async {
     bool flag = false;
-    print(flag);
+    // print(flag);
     SharedPreferences prefs = await SharedPreferences.getInstance();
+    
+
     if (prefs.getString('Username') != null) {
       flag = true;
+      route.INITIAL_ROUTE = '/Home_View';
     }
 
-    print(flag);
-    route.changeInitialRoute(flag);
+    //print(flag);
+
     return 0;
   }
 
@@ -36,13 +39,14 @@ class _MyAppState extends State<MyApp> {
     // TODO: implement initState
     super.initState();
 
-    print("Inside initial route");
+    //print("Inside initiState");
     setInitialRoute();
   }
 
   @override
   Widget build(BuildContext context) {
-    print('In Build My app');
+    //print('In Build My app');
+    print(route.INITIAL_ROUTE);
     return MaterialApp(
       initialRoute: route.INITIAL_ROUTE,
       routes: {
