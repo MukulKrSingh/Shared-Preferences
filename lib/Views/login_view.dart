@@ -63,11 +63,11 @@ class _LogInViewState extends State<LogInView> {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
     //print('prefs obj recv $prefs');
-    prefs.setString('Username', _username.text);
+    prefs.setBool('Username',true);
 
     Navigator.pushNamed(context, '/Home_View');
 
-    String? testUser = prefs.getString('Username');
+    bool? testUser = prefs.getBool('Username');
 
     print('$testUser');
   }
