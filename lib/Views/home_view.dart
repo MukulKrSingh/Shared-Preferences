@@ -10,14 +10,17 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
+
   @override
   Widget build(BuildContext context) {
+
+    
     return  Scaffold(
       appBar: AppBar(
         title: Text('Shared Prefs Home'),
       ),
       body: Center(
-        child: Text('CONGRATS !! You have used shared preferences!!! '),
+        child: Text('CONGRATS !! You have used shared preferences!!!  '),
       ),
     );
   }

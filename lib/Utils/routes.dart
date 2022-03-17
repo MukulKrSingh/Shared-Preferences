@@ -1,22 +1,36 @@
 // ignore_for_file: non_constant_identifier_names, prefer_const_constructors
+import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:shared_prefs_ice_breaker/Views/home_view.dart';
+import 'package:shared_prefs_ice_breaker/Views/login_view.dart';
 
-class Routes {
-  var LOGIN_VIEW_ROUTE = '/Login_View';
-  var HOME_VIEW_ROUTE = '/Home_View';
-  var INITIAL_ROUTE = '/Login_View';
+class Routes extends StatelessWidget {
+  const Routes({Key? key}) : super(key: key);
 
-  changeInitialRoute(bool flag) {
-    //asdad
-    //print('Inside change initial route');
-    if (flag) {
-      INITIAL_ROUTE = '/Home_View';
-      //print(INITIAL_ROUTE);
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder(
+      future: savedUser(context),
+      builder: (context, snapshot) {
+        if (snapshot.data == true) {
+          return HomeView();
+        } else {
+          return LogInView();
+        }
+      },
+    );
+  }
+
+  Future<bool> savedUser(BuildContext context) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    //prefs.remove('Username');
+
+    if (prefs.getBool('Username') ?? false) {
+      return true;
     } else {
-      INITIAL_ROUTE = '/Login_View';
+      //Navigator.pushNamed(context, '/');
+      return false;
     }
-
-
-    //print(INITIAL_ROUTE);
-    return 0;
   }
 }

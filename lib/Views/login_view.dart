@@ -62,6 +62,7 @@ class _LogInViewState extends State<LogInView> {
     //print('In _saveUSer()');
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
+    prefs.remove('Username');
     //print('prefs obj recv $prefs');
     prefs.setBool('Username',true);
 
