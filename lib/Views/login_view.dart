@@ -59,17 +59,14 @@ class _LogInViewState extends State<LogInView> {
   }
 
   _saveUser(String username, String password) async {
-    //print('In _saveUSer()');
+    
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
-    prefs.remove('Username');
-    //print('prefs obj recv $prefs');
+    
     prefs.setBool('Username',true);
 
+
+    
     Navigator.pushNamed(context, '/Home_View');
-
-    bool? testUser = prefs.getBool('Username');
-
-    print('$testUser');
-  }
+    }
 }
